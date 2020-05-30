@@ -10,6 +10,7 @@ import { LEADERS } from '../shared/leaders';
 import { PROMOTIONS } from '../shared/promotions';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import DishDetail from './dishDetailComponent';
+import About from './aboutComponent';
 
 class Main extends Component{
 
@@ -40,6 +41,12 @@ class Main extends Component{
         );
     }
 
+    AboutPage = () => {
+        return(
+            <About leaders={this.state.leaders}/>
+        );
+    }
+
     render(){
         return(
             <>
@@ -48,6 +55,7 @@ class Main extends Component{
                 <Route path="/home" component={this.HomePage}/>
                 <Route exact path="/menu" component={()=><Menu dishes={this.state.dishes} onClick={(dishId)=>this.onDishSelect(dishId)}/>}/>
                 <Route path="/menu/:dishId" component={this.DishwithId}/>
+                <Route path="/aboutus" component={this.AboutPage} />
                 <Route exact path="/contactus" component={Contact}/>
                 <Redirect to="/home"/>
             </Switch>
