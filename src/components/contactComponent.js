@@ -138,7 +138,6 @@ class Contact extends Component {
             </div>
         );
     }
-    
 }
 
 export default Contact;
