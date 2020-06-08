@@ -17,7 +17,7 @@ function RenderDish({dish}){
     );
 }
 
-function RenderComments({comments}){
+function RenderComments({comments, addComment , dishId}){
     return(
         <div>
             <ul className="list-unstyled">
@@ -32,7 +32,7 @@ function RenderComments({comments}){
             }
             </ul>
             
-            <CommentForm/>
+            <CommentForm addComment={addComment} dishId={dishId}/>
         </div>
     );
 }
@@ -54,7 +54,10 @@ function DishDetail(props){
                 </div>
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
-                    <RenderComments comments={props.comments}/>
+                    <RenderComments comments={props.comments}
+                        addComment={props.addComment}
+                        dishId={props.dish.id}
+                    />
                 </div>
             </div>
         );
@@ -84,8 +87,7 @@ class CommentForm extends Component{
     }
 
     handleSubmit = (values) => {
-        console.log("Form values : " + JSON.stringify(values));
-        alert("values : " + JSON.stringify(values));
+        this.props.addComment(this.props.dishId,values.rating,values.author,values.comment)
         this.toggleModal(); 
     }
 
