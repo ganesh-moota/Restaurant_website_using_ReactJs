@@ -1,6 +1,7 @@
 import * as ActionTypes from './ActionTypes';
 
 export const Comments = (state = {
+    isLoading:true,
     errMsg: null,
     comments: []
 }, action) => {
